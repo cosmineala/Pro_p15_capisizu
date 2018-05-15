@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "crypting"
+#include "crypting.h"
 
 
 
-int int main()
+ int main()
 {
-	int meniu;
+	int meniu = 0;
 
 	printf("\nINSERT: \n1 to encrypt \n2 to decrypt \n>>>");
 

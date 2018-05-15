@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "crypting"
+#include "crypting.h"
 
 
 
@@ -58,7 +58,7 @@ void crip_de()
     if ( st_citire[0] >= 'a' && st_citire[0] <= 'z') {
         a =trans_asci_num [ ( int ) st_citire[0] - 97] ;
         if ( a < 10 || a > 18) {
-            printf("Mesaj incorect , incercati din nou\n");
+            printf("(de cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
             return ;
         }
@@ -66,11 +66,11 @@ void crip_de()
         if ( st_citire[0] >= 'A' && st_citire[0] <= 'Z' ){
             a =trans_asci_num [ ( int ) st_citire[0] - 65] ;
             if ( a < 10 || a > 18) {
-                printf("Mesaj incorect , incercati din nou\n");
+                printf("(de cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
                 return ;}
         }else{
-            printf("Mesaj incorect , incercati din nou\n");
+            printf("(de cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
             return ;
             
@@ -221,7 +221,7 @@ void crip_cr()
     
     st_citire[ j-1 ] = '\0';
     
-    
+    printf(" \nver>>%s<<ver\n",st_citire);//----------------ver
     
     
     
@@ -237,7 +237,7 @@ void crip_cr()
     if ( st_citire[0] >= 'a' && st_citire[0] <= 'z') {
         a =trans_asci_num [ ( int ) st_citire[0] - 97] ;
         if ( a < 10 || a > 18) {
-            printf("Mesaj incorect , incercati din nou\n");
+            printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
             return ;
         }
@@ -245,11 +245,11 @@ void crip_cr()
         if ( st_citire[0] >= 'A' && st_citire[0] <= 'Z' ){
             a =trans_asci_num [ ( int ) st_citire[0] - 65] ;
             if ( a < 10 || a > 18) {
-                printf("Mesaj incorect , incercati din nou\n");
+                printf("(cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
                 return ;}
         }else{
-            printf("Mesaj incorect , incercati din nou\n");
+            printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
             return ;
             
