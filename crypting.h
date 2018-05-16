@@ -2,10 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
+void meniu();
 
+void decrypt();
 
-void crip_de();
-
-void crip_cr();
+char *scan();
 
 int main();
+
+void crypt();

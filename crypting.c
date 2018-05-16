@@ -9,20 +9,55 @@
 
 //---------------------------------------------------START--DCR------------------------------------------------------------------------------------------
 
-void crip_de()
-{
-    int trans_asci_num [26] = { 10 , 23 , 21 , 12 , 2 , 13 , 14 , 15 , 7 , 16 , 17 , 18 , 25, 24 , 8 ,  9  , 0 ,  3  , 11 , 4 ,  6 ,  22 , 1 ,  20 , 5  , 19 }; //65-90   97--122
-    int trans_mum_asci [26] = { 16 , 22 , 4 , 17 , 19 , 24 , 20 , 8 , 14 , 15 , 0 , 18 , 3 , 5 , 6 , 7 , 9 , 10 , 11 , 25 , 23 , 2 , 21 , 1 , 13 , 12 };//+97
-    
-    int p , a ;
-    
+
+    void meniu(){
+
+        int meniu = 0;
+
+    printf("\nINSERT: \n1 to encrypt \n2 to decrypt \n0 to exit \n>>>");
+
+    scanf("%d",&meniu);
+
+    switch(meniu){
+
+        case 0:
+            return ;
+
+
+        case 1:
+            printf("\n");
+            crypt();
+            break;
+
+        case 2:
+            printf("\n");
+            decrypt();
+            break;
+
+        default :
+            printf("Incorect insertion please falow the instruction");
+            main();
+            break;
+    }
+
+
+    return ;
+
+
+
+    }
+
+
+
     //----mem
+
+    char *scan(){
     
-    char *st_citire;
-    char c = 'a';
-    int j = 1;
+        char *st_citire;
+        char c = 'a';
+        int j = 0;
     
-    st_citire = (char*)malloc(sizeof(char));
+        st_citire = (char*)malloc(sizeof(char));
 
 
                                                                             char bug;//rezolvare bug
@@ -30,143 +65,143 @@ void crip_de()
                                                                             bug = getc(stdin);
 
     
-    printf("Enter String : ");
+        printf("Enter String : ");
+ 
+        while (c != '\n') {
+        
+            c = getc(stdin);
+        
+        
+            st_citire = (char*)realloc(st_citire, (j + 1) * sizeof(char));
+        
+        
+            st_citire[j] = c;
+        
+        
+            j++;
+        }
     
-    while (c != '\n') {
+        st_citire[ j ] = '\0';
         
-        c = getc(stdin);
-        
-        
-        st_citire = (char*)realloc(st_citire, j * sizeof(char));
-        
-        
-        st_citire[j-1] = c;
-        
-        
-        j++;
+        return st_citire;
     }
-    
-    st_citire[ j-1 ] = '\0';
-    
-    
-    
     
     
     
     ////---mem
     
+    void decrypt(){
+
+
+        int trans_asci_num [26] = { 10 , 23 , 21 , 12 , 2 , 13 , 14 , 15 , 7 , 16 , 17 , 18 , 25, 24 , 8 ,  9  , 0 ,  3  , 11 , 4 ,  6 ,  22 , 1 ,  20 , 5  , 19 }; //65-90   97--122
+        int trans_mum_asci [26] = { 16 , 22 , 4 , 17 , 19 , 24 , 20 , 8 , 14 , 15 , 0 , 18 , 3 , 5 , 6 , 7 , 9 , 10 , 11 , 25 , 23 , 2 , 21 , 1 , 13 , 12 };//+97
     
-    int i = 1;
+        int p , a ;
     
-    // scanf("%[^\n]s", st_citire);//citire sir
+        int i = 1;
+
+        char *st_citire = scan();
+
+        unsigned long st_lenght = strlen(st_citire);
+    
+                                                                                                    // scanf("%[^\n]s", st_citire);//citire sir
     
     
-    if ( st_citire[0] >= 'a' && st_citire[0] <= 'z') {
-        a =trans_asci_num [ ( int ) st_citire[0] - 97] ;
-        if ( a < 10 || a > 18) {
-            printf("(de cr)Mesaj incorect , incercati din nou\n");
-            free(st_citire);
-            main();
-            return ;
-        }
-    }else{
-        if ( st_citire[0] >= 'A' && st_citire[0] <= 'Z' ){
-            a =trans_asci_num [ ( int ) st_citire[0] - 65] ;
+        if ( st_citire[0] >= 'a' && st_citire[0] <= 'z') {
+            a =trans_asci_num [ ( int ) st_citire[0] - 97] ;
             if ( a < 10 || a > 18) {
                 printf("(de cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
                 main();
-                return ;}
+                return ;
+            }
         }else{
-            printf("(de cr)Mesaj incorect , incercati din nou\n");
-            free(st_citire);
-            main();
-            return ;
+            if ( st_citire[0] >= 'A' && st_citire[0] <= 'Z' ){
+                a =trans_asci_num [ ( int ) st_citire[0] - 65] ;
+                if ( a < 10 || a > 18) {
+                    printf("(de cr)Mesaj incorect , incercati din nou\n");
+                    free(st_citire);
+                    main();
+                    return ;}
+            }else{
+                printf("(de cr)Mesaj incorect , incercati din nou\n");
+                free(st_citire);
+                main();
+                return ;
             
-        }
-        
-    }
-    
-    
-    
-    a-=10;
-    
-    
-    
-    for ( i = 1; i < strlen(st_citire); i++) {
-        
-        if ( st_citire[i] >= 'a' && st_citire[i] <= 'z' ) {//-------------litere mici
-            
-            p = trans_asci_num [ (( int ) st_citire[i]) - 97];
-            //  printf(" >poz>%d<poz< \n",p);
-            if ( p >= 0 && p <= 9 ) {/*--------rand 1*/
-                if ( p - a < 0 ) {
-                    p = p - a + 10;
-                    st_citire[i] = (char)(trans_mum_asci[p] + 97);
-                }
-                else{
-                    p = p - a;
-                    st_citire[i] = (char)(trans_mum_asci[p] + 97);}
-                
             }
-            else{
-                if ( p >= 10 && p <= 18 ) {//------rand 2
-                    if ( p - a < 10) {
-                        p = p - a + 9;
-                        st_citire[i] = (char)(trans_mum_asci[p] + 97);
-                    }
-                    else{
-                        p = p - a;
-                        st_citire[i] = (char)(trans_mum_asci[p] + 97);
-                    }
-                }
-                else{
-                    if ( p >= 19 && p <= 25 ) {//------rand 3
-                        if ( p - a < 19) {
-                            p = p - a + 7;
-                            st_citire[i] = (char)(trans_mum_asci[p] + 97);
-                        }
-                        else{
-                            p = p - a;
-                            st_citire[i] = (char)(trans_mum_asci[p] + 97);
-                        }
-                    }
-                }
-            }
-            
-            
+        
         }
-        else{                      // litere mari - end
+    
+    
+    
+        a-=10;
+    
+    
+    
+        for ( i = 1; i < st_lenght ; i++) {
+        
+            if ( st_citire[i] >= 'a' && st_citire[i] <= 'z' ) {//-------------litere mici
             
-            if ( st_citire[i] >= 'A' && st_citire[i] <= 'Z' ) {//-------------litere mari
-                
-                p = trans_asci_num [ (( int ) st_citire[i]) - 65];
-                //  printf(" >poz>%d<poz< \n",p);
+                p = trans_asci_num [ (( int ) st_citire[i]) - 97];
+                                                                                                        //  printf(" >poz>%d<poz< \n",p);
                 if ( p >= 0 && p <= 9 ) {/*--------rand 1*/
                     if ( p - a < 0 ) {
                         p = p - a + 10;
-                        st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                        st_citire[i] = (char)(trans_mum_asci[p] + 97);
                     }
                     else{
                         p = p - a;
-                        st_citire[i] = (char)(trans_mum_asci[p] + 65);}
-                    
+                        st_citire[i] = (char)(trans_mum_asci[p] + 97);}
+                
                 }
                 else{
                     if ( p >= 10 && p <= 18 ) {//------rand 2
                         if ( p - a < 10) {
                             p = p - a + 9;
-                            st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                            st_citire[i] = (char)(trans_mum_asci[p] + 97);
                         }
                         else{
                             p = p - a;
-                            st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                            st_citire[i] = (char)(trans_mum_asci[p] + 97);
                         }
                     }
                     else{
                         if ( p >= 19 && p <= 25 ) {//------rand 3
                             if ( p - a < 19) {
                                 p = p - a + 7;
+                                st_citire[i] = (char)(trans_mum_asci[p] + 97);
+                            }
+                            else{
+                                p = p - a;
+                                st_citire[i] = (char)(trans_mum_asci[p] + 97);
+                            }
+                        }
+                    }
+                }
+            
+            
+            }
+            else{                      // litere mari - end
+            
+                if ( st_citire[i] >= 'A' && st_citire[i] <= 'Z' ) {//-------------litere mari
+                
+                    p = trans_asci_num [ (( int ) st_citire[i]) - 65];
+                                                                                                        //  printf(" >poz>%d<poz< \n",p);
+                    if ( p >= 0 && p <= 9 ) {/*--------rand 1*/
+                        if ( p - a < 0 ) {
+                            p = p - a + 10;
+                            st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                        }
+                        else{
+                            p = p - a;
+                            st_citire[i] = (char)(trans_mum_asci[p] + 65);}
+                    
+                    }
+                    else{
+                        if ( p >= 10 && p <= 18 ) {//------rand 2
+                            if ( p - a < 10) {
+                                p = p - a + 9;
                                 st_citire[i] = (char)(trans_mum_asci[p] + 65);
                             }
                             else{
@@ -174,25 +209,35 @@ void crip_de()
                                 st_citire[i] = (char)(trans_mum_asci[p] + 65);
                             }
                         }
+                        else{
+                            if ( p >= 19 && p <= 25 ) {//------rand 3
+                                if ( p - a < 19) {
+                                    p = p - a + 7;
+                                    st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                                }
+                                else{
+                                    p = p - a;
+                                    st_citire[i] = (char)(trans_mum_asci[p] + 65);
+                                }
+                            }
+                        }
                     }
-                }
                 
-                
-            }/*--------------------------------end-literemari*/
+                }/*--------------------------------end-literemari*/
             
-        }
+            }
         
-    }                     // for-end
+        }                     // for-end
     
     printf(" \nThe decrypted string it is : %s\n",st_citire);
     
     free(st_citire);
 
-    main();
+    meniu();
 
     return ;
     
-}
+    }
 
 //------------------------------------------------------------------END--DCR-------------------------------------------------------------------------------
 
@@ -200,7 +245,7 @@ void crip_de()
 
 //---------------------------------------------------------------------START--CR----------------------------------------------------------------------------------------------------------------------
 
-void crip_cr()
+void crypt()
 {
     int trans_asci_num [26] = { 10 , 23 , 21 , 12 , 2 , 13 , 14 , 15 , 7 , 16 , 17 , 18 , 25, 24 , 8 ,  9  , 0 ,  3  , 11 , 4 ,  6 ,  22 , 1 ,  20 , 5  , 19 }; //65-90   97--122
     int trans_mum_asci [26] = { 16 , 22 , 4 , 17 , 19 , 24 , 20 , 8 , 14 , 15 , 0 , 18 , 3 , 5 , 6 , 7 , 9 , 10 , 11 , 25 , 23 , 2 , 21 , 1 , 13 , 12 };//+97
@@ -209,40 +254,10 @@ void crip_cr()
     
     //----mem
     
-    char *st_citire;
-    char c = 'a' ;
-    int j = 1;
-    
-    st_citire = (char*)malloc(sizeof(char));
-    
-    printf("Enter String : ");
-
-                                                                            char bug;//rezolvare bug
-
-                                                                            bug = getc(stdin);
-    
-    while (c != '\n') {
-        
-        c = getc(stdin);
-        
-        
-        st_citire = (char*)realloc(st_citire, j * sizeof(char));
-        
-        
-        st_citire[j-1] = c;
-        
-        
-        j++;
-    }
-    
-    st_citire[ j-1 ] = '\0';
+    char *st_citire = scan();
     
     //printf(" \nver>>%s<<ver\n",st_citire);//----------------ver
-    
-    
-    
-    
-    ////---mem
+    unsigned long st_lenght = strlen(st_citire);
     
     
     int i = 1;
@@ -282,7 +297,7 @@ void crip_cr()
     
     
     
-    for ( i = 1; i < strlen(st_citire); i++) {
+    for ( i = 1; i < st_lenght; i++) {
         
         if ( st_citire[i] >= 'a' && st_citire[i] <= 'z' ) {//-------------litere mici
             
@@ -365,7 +380,7 @@ void crip_cr()
                         }
                     }
                 }
-                
+                    
                 
             }/*--------------------------------end-literemari*/
             
@@ -377,7 +392,7 @@ void crip_cr()
     
     free(st_citire);
 
-    main();
+    meniu();
 
     return ;
     
