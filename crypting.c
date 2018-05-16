@@ -23,6 +23,12 @@ void crip_de()
     int j = 1;
     
     st_citire = (char*)malloc(sizeof(char));
+
+
+                                                                            char bug;//rezolvare bug
+
+                                                                            bug = getc(stdin);
+
     
     printf("Enter String : ");
     
@@ -175,9 +181,12 @@ void crip_de()
         
     }                     // for-end
     
-    printf(" \n%s\n",st_citire);
+    printf(" \nThe decrypted string it is : %s\n",st_citire);
     
     free(st_citire);
+
+    main();
+
     return ;
     
 }
@@ -198,12 +207,16 @@ void crip_cr()
     //----mem
     
     char *st_citire;
-    char c = 'a';
+    char c = 'a' ;
     int j = 1;
     
     st_citire = (char*)malloc(sizeof(char));
     
     printf("Enter String : ");
+
+                                                                            char bug;//rezolvare bug
+
+                                                                            bug = getc(stdin);
     
     while (c != '\n') {
         
@@ -221,7 +234,7 @@ void crip_cr()
     
     st_citire[ j-1 ] = '\0';
     
-    printf(" \nver>>%s<<ver\n",st_citire);//----------------ver
+    //printf(" \nver>>%s<<ver\n",st_citire);//----------------ver
     
     
     
@@ -354,9 +367,12 @@ void crip_cr()
         
     }                     // for-end
     
-    printf(" \n%s\n",st_citire);
+    printf(" \nThe encrypted string it is : %s\n",st_citire);
     
     free(st_citire);
+
+    main();
+
     return ;
     
 }
