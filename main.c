@@ -6,18 +6,18 @@
 
 
 
- int main()
+int main()
 {
 	int meniu = 0;
 
-	printf("\nINSERT: \n1 to encrypt \n2 to decrypt \n0 to exit \n>>>");
+	printf("\nINSERT: \n1 to encrypt \n2 to  decrypt \n0 to exit \n>>>");
 
 	scanf("%d",&meniu);
 
 	switch(meniu){
 
 		case 0:
-			return 0 ;
+			return 0;
 
 
 		case 1:

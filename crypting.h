@@ -7,3 +7,5 @@
 void crip_de();
 
 void crip_cr();
+
+int main();
