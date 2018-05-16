@@ -66,6 +66,7 @@ void crip_de()
         if ( a < 10 || a > 18) {
             printf("(de cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
+            main();
             return ;
         }
     }else{
@@ -74,10 +75,12 @@ void crip_de()
             if ( a < 10 || a > 18) {
                 printf("(de cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
+                main();
                 return ;}
         }else{
             printf("(de cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
+            main();
             return ;
             
         }
@@ -252,6 +255,7 @@ void crip_cr()
         if ( a < 10 || a > 18) {
             printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
+            main();
             return ;
         }
     }else{
@@ -260,10 +264,12 @@ void crip_cr()
             if ( a < 10 || a > 18) {
                 printf("(cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
+                main();
                 return ;}
         }else{
             printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
+            main();
             return ;
             
         }
