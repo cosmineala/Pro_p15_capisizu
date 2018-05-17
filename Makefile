@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.c crypting.c
+SOURCES=main.c crypting.c function.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=encryption
 

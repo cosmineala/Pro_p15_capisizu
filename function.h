@@ -6,6 +6,6 @@
 #include "crypting.h"
 #include "function.h"
 
-void decrypt();
+char *scan();
 
-void crypt();
+void men();

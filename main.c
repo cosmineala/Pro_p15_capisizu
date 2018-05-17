@@ -2,14 +2,16 @@
 #include <stdio.h>
 #include <string.h>
 
+
 #include "crypting.h"
+#include "function.h"
 
 
 
-int main()
-{
-	meniu();
+int main(){
 
+	men();
 
 	return 0;
-}
+
+	}
