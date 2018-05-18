@@ -47,7 +47,7 @@
             if ( a < 10 || a > 18) {
                 printf("(de cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
-                main();
+                men();
                 return ;
             }
         }else{
@@ -56,12 +56,12 @@
                 if ( a < 10 || a > 18) {
                     printf("(de cr)Mesaj incorect , incercati din nou\n");
                     free(st_citire);
-                    main();
+                    men();
                     return ;}
             }else{
                 printf("(de cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
-                main();
+                men();
                 return ;
             
             }
@@ -205,7 +205,7 @@ void crypt()
         if ( a < 10 || a > 18) {
             printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
-            main();
+            men();
             return ;
         }
     }else{
@@ -214,12 +214,12 @@ void crypt()
             if ( a < 10 || a > 18) {
                 printf("(cr)Mesaj incorect , incercati din nou\n");
                 free(st_citire);
-                main();
+                men();
                 return ;}
         }else{
             printf("(cr)Mesaj incorect , incercati din nou\n");
             free(st_citire);
-            main();
+            men();
             return ;
             
         }
