@@ -32,7 +32,7 @@
 
         	default :
             	printf("Incorect insertion please falow the instruction");
-            	main();
+            	men();
             	break;
     	}
 

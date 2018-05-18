@@ -1,11 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
-
-#include "crypting.h"
-#include "function.h"
+#ifndef CRYPTING
+#define CRYPTING
 
 void decrypt();
 
 void crypt();
+
+#endif
